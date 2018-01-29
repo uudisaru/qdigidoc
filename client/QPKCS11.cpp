@@ -523,6 +523,7 @@ bool QPKCS11Stack::load(const QString &defaultDriver)
 		d->drivers.insert("/Library/OpenSC/lib/opensc-pkcs11.so", "3B7B940000806212515646696E454944");
 	d->drivers.insert("/Library/Frameworks/eToken.framework/Versions/Current/libeToken.dylib", "3BD5180081313A7D8073C8211030");
 	d->drivers.insert("/Library/Frameworks/eToken.framework/Versions/Current/libeToken.dylib", "3BD518008131FE7D8073C82110F4");
+	d->drivers.insert("/usr/local/AWP/lib/libOcsCryptoki.dylib", "3BDD18008131FE4580F9A000000077010800079000FE");
 	QVariantMap PKCS11 = Settings().value("PKCS11").toMap();
 	for(auto it = PKCS11.cbegin(), end = PKCS11.cend(); it != end; ++it)
 		d->drivers.insert(it.value().toString(), it.key().toLocal8Bit());
@@ -534,6 +535,7 @@ bool QPKCS11Stack::load(const QString &defaultDriver)
 	d->drivers.insert("otlv-pkcs11.so", "3BDD18008131FE45904C41545649412D65494490008C");
 	d->drivers.insert("/usr/lib/ccs/libccpkip11.so", "3BF81300008131FE45536D617274417070F8");
 	d->drivers.insert("/usr/lib/ccs/libccpkip11.so", "3B7D94000080318065B08311C0A983009000");
+	d->drivers.insert("/usr/local/AWP/lib/libOcsCryptoki.so", "3BDD18008131FE4580F9A000000077010800079000FE");
 #endif
 	updateDrivers();
 	return isLoaded();
