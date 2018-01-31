@@ -315,7 +315,7 @@ Application::Application( int &argc, char **argv )
 
 	QSigner::ApiType api = QSigner::PKCS11;
 #ifdef Q_OS_WIN
-	api = QSigner::ApiType(Settings(applicationName()).value("tokenBackend", QSigner::CNG).toUInt());
+	api = QSigner::ApiType(Settings(applicationName()).value("tokenBackend", QSigner::PKCS11).toUInt());
 	if( args.contains("-cng") )
 		api = QSigner::CNG;
 	if( args.contains("-capi") )
