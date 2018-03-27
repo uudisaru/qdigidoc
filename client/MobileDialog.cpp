@@ -27,6 +27,7 @@
 #include <common/SOAPDocument.h>
 #include <common/SslCertificate.h>
 
+#include <QDebug>
 #include <QtCore/QDir>
 #include <QtCore/QTimeLine>
 #include <QtCore/QTimer>
@@ -262,6 +263,7 @@ void MobileDialog::sign( const DigiDoc *doc, const QString &ssid, const QString 
 		r.writeStartElement( "DataFileDigest" );
 		r.writeAttribute( XML_SCHEMA_INSTANCE, "type", QString( "m:" ).append( "DataFileDigest" ) );
 		r.writeParameter( "Id", m->index( i, DocumentModel::Id ).data().toString() );
+		qDebug() << "Mobile add file:" << m->index( i, DocumentModel::Id ).data().toString().toLatin1().toHex() << m->index( i, DocumentModel::Id ).data().toString();
 		r.writeParameter( "DigestType", ddoc ? "sha1" : "sha256" );
 		r.writeParameter( "DigestValue", doc->getFileDigest( i ).toBase64() );
 		r.writeParameter( "MimeType", m->index( i, DocumentModel::Mime ).data().toString() );
