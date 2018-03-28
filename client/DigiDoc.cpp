@@ -31,6 +31,7 @@
 #include <digidocpp/Signature.h>
 #include <digidocpp/crypto/X509Cert.h>
 
+#include <QDebug>
 #include <QtCore/QDateTime>
 #include <QtCore/QDir>
 #include <QtCore/QFileInfo>
@@ -443,6 +444,7 @@ void DigiDoc::addFile( const QString &file )
 	if( !checkDoc( b->signatures().size() > 0, tr("Cannot add files to signed container") ) )
 		return;
 	try {
+		qDebug() << "DDOC add file:" << file.toLatin1().toHex() << to(file).c_str();
 		b->addDataFile( to(file), "application/octet-stream" );
 		m_documentModel->reset();
 		modified = true;
